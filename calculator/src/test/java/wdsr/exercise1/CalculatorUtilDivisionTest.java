@@ -7,9 +7,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +27,12 @@ public class CalculatorUtilDivisionTest {
 	
 	@Test
 	public void test16dividedBy4() {
-		fail("Not yet implemented");
+		doReturn(4.0).when(calculator).divide(anyInt(),anyInt());
+
+		String result = calcUtil.getDivisionText(16,4);
+
+		assertEquals("16 / 4 = 4.0", result);
+		verify(calculator).divide(anyInt(), anyInt());
 	}		
 
 	@Test(expected=IllegalArgumentException.class)

@@ -14,6 +14,9 @@ public class CalculatorUtil {
 	}
 
 	public String getSubstractionText(final int a, final int b) {
+		if(a<0 || b<0){
+			return String.format("(%s) - (%s) = (%s)", a, b, calculator.subtract(a, b));
+		}
 		return String.format("%s - %s = %s", a, b, calculator.subtract(a, b));
 	}
 	
@@ -22,7 +25,6 @@ public class CalculatorUtil {
 	}
 	
 	public String getModuloText(final int a, final int b) {
-		System.out.println("test");
 		return String.format("%s %% %s = %s", a, b, calculator.modulo(a, b));
 	}
 
